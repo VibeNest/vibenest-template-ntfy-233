@@ -1,0 +1,6 @@
+base-url: "https://CHANGE_ME"
+cache-file: "/var/cache/ntfy/cache.db"
+auth-file: "/var/cache/ntfy/user.db"
+auth-default-access: "deny-all"
+behind-proxy: true
+enable-login: true
