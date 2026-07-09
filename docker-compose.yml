@@ -7,9 +7,15 @@ services:
       - "80:80"
     expose:
       - "80"
+    environment:
+      NTFY_BASE_URL: ${NTFY_BASE_URL:-https://CHANGE_ME}
+      NTFY_CACHE_FILE: /var/cache/ntfy/cache.db
+      NTFY_AUTH_FILE: /var/cache/ntfy/user.db
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all
+      NTFY_BEHIND_PROXY: "true"
+      NTFY_ENABLE_LOGIN: "true"
     volumes:
       - ntfy-cache:/var/cache/ntfy
-      - ./server.yml:/etc/ntfy/server.yml:ro
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1/v1/health || exit 1"]
       interval: 30s

@@ -7,11 +7,11 @@ It does not fork or modify ntfy. The repo only provides deploy-safe Docker defau
 - official image: `binwiederhier/ntfy:latest`
 - app port: `80`
 - persistent cache/auth database volume
-- deny-by-default auth baseline
+- deny-by-default auth baseline via `NTFY_*` environment variables
 
 ## VibeNest notes
 
-One-click deploy stays disabled until smoke confirms the public URL opens ntfy and the first-user/auth flow is safe. After deploy, create users with the ntfy CLI or a controlled platform recipe before exposing private topics.
+One-click deploy stays disabled until smoke confirms the public URL opens ntfy and the first-user/auth flow is safe. After deploy, set `NTFY_BASE_URL` to the final VibeNest subdomain and create users with the ntfy CLI or a controlled platform recipe before exposing private topics.
 
 ## Upstream
 
