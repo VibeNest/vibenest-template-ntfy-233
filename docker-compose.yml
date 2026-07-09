@@ -3,10 +3,8 @@ services:
     image: binwiederhier/ntfy:latest
     restart: unless-stopped
     command: serve
-    ports:
-      - "80:80"
     expose:
-      - "80"
+    - "80"
     environment:
       NTFY_BASE_URL: ${NTFY_BASE_URL:-https://CHANGE_ME}
       NTFY_CACHE_FILE: /var/cache/ntfy/cache.db
@@ -15,12 +13,11 @@ services:
       NTFY_BEHIND_PROXY: "true"
       NTFY_ENABLE_LOGIN: "true"
     volumes:
-      - ntfy-cache:/var/cache/ntfy
+    - ntfy-cache:/var/cache/ntfy
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1/v1/health || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
-
 volumes:
   ntfy-cache:
